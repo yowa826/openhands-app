@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Progress</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+  <h2>計算中…</h2>
+
+  <div class="progress" style="height:25px;">
+    <div id="progressBar" class="progress-bar" style="width:0%;" role="progressbar">0 %</div>
+  </div>
+
+  <script>
+    // ここで Jinja が {{ job_id }} を UUID に置換してくれる
+    const jobId = "{{ job_id }}";
+
+    function poll() {
+      fetch(`/progress/${jobId}`)
+        .then(r => r.json())
+        .then(d => {
+          const pct = (d.ratio * 100).toFixed(0);
+          const bar = document.getElementById('progressBar');
+          bar.style.width   = pct + '%';
+          bar.textContent   = pct + ' %';
+
+          if (pct >= 100) {
+            window.location.href = `/result/${jobId}`;
+          } else {
+            setTimeout(poll, 1000);
+          }
+        })
+        .catch(() => setTimeout(poll, 2000));
+    }
+    poll();
+  </script>
+</body>
+</html>

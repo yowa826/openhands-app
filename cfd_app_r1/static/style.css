@@ -1,0 +1,7 @@
+/* style.css - Minimal design */
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 800px;
+}
