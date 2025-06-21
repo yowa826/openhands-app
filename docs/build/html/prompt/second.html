@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>返答プロンプト① &mdash; openhands-app 0.0.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e93cb3d0"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="返答プロンプト②" href="third.html" />
+    <link rel="prev" title="初回プロンプト" href="first.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            openhands-app
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">作成のページ</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">概要と目次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">OpenHands のセットアップ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ChatGPT を用いたプロンプト作成</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="first.html">初回プロンプト</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">返答プロンプト①</a></li>
+<li class="toctree-l2"><a class="reference internal" href="third.html">返答プロンプト②</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">完成アプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">OpenHands を使ってみた感想</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">openhands-app</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ChatGPT を用いたプロンプト作成</a></li>
+      <li class="breadcrumb-item active">返答プロンプト①</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/prompt/second.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>返答プロンプト①<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>1回目のプロンプトを参考にしばらく開発を行ったのち、
+次のようなメッセージが返ってきた。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>進捗概要
+<span class="linenos"> 2</span>ディレクトリ構成
+<span class="linenos"> 3</span>アプリに必要なフォルダとファイルを作成済み。
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>作成済みファイル
+<span class="linenos"> 6</span>ファイル        役割
+<span class="linenos"> 7</span>app.py      Flask エントリポイント。基本ルーティングを設定。
+<span class="linenos"> 8</span>cfd.py      NumPy／Numba ベースの 2 次元 CFD ソルバーのプレースホルダー。
+<span class="linenos"> 9</span>templates/index.html        ユーザーが境界条件を入力する HTML フォーム。
+<span class="linenos">10</span>templates/result.html       解析結果表示用の HTML ページ。
+<span class="linenos">11</span>static/style.css    最小限のスタイルシート。
+<span class="linenos">12</span>tests/test_solver.py        CFD ソルバーを検証する PyTest ファイル。
+<span class="linenos">13</span>Dockerfile  Docker イメージビルド用ファイル。
+<span class="linenos">14</span>requirements.txt    依存パッケージ一覧。
+<span class="linenos">15</span>README.md   ローカル実行および Docker 実行の手順書。
+<span class="linenos">16</span>
+<span class="linenos">17</span>次のステップ
+<span class="linenos">18</span>cfd.py
+<span class="linenos">19</span>
+<span class="linenos">20</span>CFD ソルバー本体のロジックを実装する。
+<span class="linenos">21</span>
+<span class="linenos">22</span>app.py
+<span class="linenos">23</span>
+<span class="linenos">24</span>フォーム送信の受け取り、非同期実行、結果ページへの遷移を実装する。
+<span class="linenos">25</span>
+<span class="linenos">26</span>可視化
+<span class="linenos">27</span>
+<span class="linenos">28</span>Plotly で速度場・圧力場を描画できるように設定する。
+<span class="linenos">29</span>
+<span class="linenos">30</span>その他、具体的な作業や疑問点があればお気軽にお知らせください。
+</pre></div>
+</div>
+<p>メッセージに対し、以下の通りChatGPTに追加の指示文を生成させた。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>次の指示書 ― 実装フェーズ 1
+<span class="linenos"> 2</span>目的
+<span class="linenos"> 3</span>最小構成から「動くプロトタイプ」へ。
+<span class="linenos"> 4</span>具体的には CFD ソルバー実装＋非同期実行＋可視化＋ダウンロード機能を仕上げる。
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>1. cfd.py ― CFD ソルバー実装
+<span class="linenos"> 7</span>アルゴリズム
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>・2 次元非圧縮性 Navier-Stokes（速度‐圧力分割：MAC／SIMPLE‐like）。
+<span class="linenos">10</span>・キャビティ流れを基本形とし、境界条件は全壁ノースリップをデフォルト、流入・流出はフォーム入力で上書き可。
+<span class="linenos">11</span>
+<span class="linenos">12</span>API
+<span class="linenos">13</span>
+<span class="linenos">14</span>python
+<span class="linenos">15</span>------
+<span class="linenos">16</span>def solve_flow(nx: int, ny: int, nu: float,
+<span class="linenos">17</span>            u_in: float, p_out: float,
+<span class="linenos">18</span>            n_steps: int, ρ: float = 1.0) -&gt; dict[str, np.ndarray]:
+<span class="linenos">19</span>    &quot;&quot;&quot;計算完了後に { &#39;u&#39;: u, &#39;v&#39;: v, &#39;p&#39;: p } を返す。&quot;&quot;&quot;
+<span class="linenos">20</span>------
+<span class="linenos">21</span>
+<span class="linenos">22</span>高速化
+<span class="linenos">23</span>
+<span class="linenos">24</span>・主要ループに @njit(parallel=True) を付与。
+<span class="linenos">25</span>・nx * ny ≤ 40_000 で 30 s 以内を目標。
+<span class="linenos">26</span>
+<span class="linenos">27</span>テスト
+<span class="linenos">28</span>
+<span class="linenos">29</span>・tests/test_solver.py に以下を実装：
+<span class="linenos">30</span>
+<span class="linenos">31</span>python
+<span class="linenos">32</span>------
+<span class="linenos">33</span>res = solve_flow(50, 50, nu=1e-3, u_in=1.0, p_out=0.0, n_steps=2000)
+<span class="linenos">34</span>assert np.isclose(res[&quot;u&quot;].mean(), 0.02, atol=0.02)
+<span class="linenos">35</span>------
+<span class="linenos">36</span>・GitHub Actions 相当の CI を想定し、テスト時間 &lt; 60 s。
+<span class="linenos">37</span>
+<span class="linenos">38</span>2. app.py ― 非同期実行フロー
+<span class="linenos">39</span>エンドポイント
+<span class="linenos">40</span>
+<span class="linenos">41</span>Method      Path    役割
+<span class="linenos">42</span>GET /       入力フォーム
+<span class="linenos">43</span>POST        /run    ジョブ登録 → /progress/&lt;job_id&gt; にリダイレクト
+<span class="linenos">44</span>GET /progress/&lt;job_id&gt;      JSON で進捗％返却
+<span class="linenos">45</span>GET /result/&lt;job_id&gt;        結果ページ
+<span class="linenos">46</span>GET /download/&lt;job_id&gt;      CSV ダウンロード
+<span class="linenos">47</span>
+<span class="linenos">48</span>バックエンド
+<span class="linenos">49</span>
+<span class="linenos">50</span>・ThreadPoolExecutor(max_workers=2) にジョブ投入。
+<span class="linenos">51</span>・計算中は Python queue or dict で進捗を共有。
+<span class="linenos">52</span>・タイムアウト 30 s 超えたら解像度を半分に落として続行し、ユーザーに警告メッセージ表示。
+<span class="linenos">53</span>
+<span class="linenos">54</span>3. テンプレート &amp; フロントエンド
+<span class="linenos">55</span>index.html
+<span class="linenos">56</span>
+<span class="linenos">57</span>・Bootstrap 5 + form-floating。
+<span class="linenos">58</span>・JavaScript でクライアント側バリデーション（max=200 など）。
+<span class="linenos">59</span>
+<span class="linenos">60</span>result.html
+<span class="linenos">61</span>
+<span class="linenos">62</span>・Plotly で
+<span class="linenos">63</span>    ・速度ベクトル＋等値線 (subplot 左)
+<span class="linenos">64</span>    ・圧力コンター (subplot 右)
+<span class="linenos">65</span>・「CSV ダウンロード」ボタンを配置。
+<span class="linenos">66</span>
+<span class="linenos">67</span>/progress
+<span class="linenos">68</span>
+<span class="linenos">69</span>・fetch API で 1 s ごとにポーリング → progress bar (aria-valuenow) 更新。
+<span class="linenos">70</span>
+<span class="linenos">71</span>4. 補助ユーティリティ
+<span class="linenos">72</span>utils.py を追加し、
+<span class="linenos">73</span>
+<span class="linenos">74</span>python
+<span class="linenos">75</span>-----
+<span class="linenos">76</span>def arrays_to_csv(u, v, p, fname) -&gt; Path:
+<span class="linenos">77</span>    ...
+<span class="linenos">78</span>-----
+<span class="linenos">79</span>・完了後に /static/outputs/{job_id}/ へ PNG + CSV を保存。
+<span class="linenos">80</span>
+<span class="linenos">81</span>5. ドキュメント更新
+<span class="linenos">82</span>・README.md に
+<span class="linenos">83</span>
+<span class="linenos">84</span>    ・入力例スクリーンショット
+<span class="linenos">85</span>    ・API 仕様表
+<span class="linenos">86</span>    ・「known issues / 今後のロードマップ」節を追記。
+<span class="linenos">87</span>
+<span class="linenos">88</span>6. コーディング規約
+<span class="linenos">89</span>・型ヒント必須、Google-style docstring、日本語コメント。
+<span class="linenos">90</span>・flake8, black, isort を CI 推奨設定で追加（requirements-dev.txt に分離）。
+<span class="linenos">91</span>
+<span class="linenos">92</span>納品物
+<span class="linenos">93</span>・更新済み code diff（すでに存在するファイルは上書き）。
+<span class="linenos">94</span>・新規 utils.py。
+<span class="linenos">95</span>・追加テスト &amp; 依存ファイル。
+<span class="linenos">96</span>
+<span class="linenos">97</span>以上。
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="first.html" class="btn btn-neutral float-left" title="初回プロンプト" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="third.html" class="btn btn-neutral float-right" title="返答プロンプト②" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tkg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

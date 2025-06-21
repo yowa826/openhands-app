@@ -1,0 +1,209 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>初回プロンプト &mdash; openhands-app 0.0.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=e93cb3d0"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="返答プロンプト①" href="second.html" />
+    <link rel="prev" title="ChatGPT を用いたプロンプト作成" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            openhands-app
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">作成のページ</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">概要と目次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/index.html">OpenHands のセットアップ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ChatGPT を用いたプロンプト作成</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">初回プロンプト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="second.html">返答プロンプト①</a></li>
+<li class="toctree-l2"><a class="reference internal" href="third.html">返答プロンプト②</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">完成アプリ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback.html">OpenHands を使ってみた感想</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">openhands-app</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ChatGPT を用いたプロンプト作成</a></li>
+      <li class="breadcrumb-item active">初回プロンプト</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/prompt/first.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>初回プロンプト<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<div class="line-block">
+<div class="line">Openhandsへの指示分はChatGPTで生成した。</div>
+<div class="line">使用し他モデルはChatGPTo3。</div>
+<div class="line">最初のプロンプトは以下の通り。</div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>指示書 ― Flask 2D CFD アプリ生成
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>1. ゴール
+<span class="linenos"> 4</span>--------
+<span class="linenos"> 5</span>ブラウザでフォームを開き、以下の境界条件を入力できる。
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>流入速度          U_in  [m/s]
+<span class="linenos"> 8</span>流出圧力          p_out [Pa]
+<span class="linenos"> 9</span>動粘性係数        ν     [m²/s]
+<span class="linenos">10</span>計算格子数        N_x, N_y （最大 200×200）
+<span class="linenos">11</span>計算ステップ数    n_steps（最大 5 000）
+<span class="linenos">12</span>
+<span class="linenos">13</span>「解析実行」ボタンを押すとサーバ側で 2 次元非圧縮性 Navier-Stokes
+<span class="linenos">14</span>（MAC 法の簡易版）を有限差分で計算。
+<span class="linenos">15</span>
+<span class="linenos">16</span>処理完了後に
+<span class="linenos">17</span>  • 速度場（u, v）のカラーコンター &amp; ベクトル図
+<span class="linenos">18</span>  • 圧力場のカラーコンター
+<span class="linenos">19</span>  • ダウンロード用 CSV（x, y, u, v, p）
+<span class="linenos">20</span>を表示・提供する。
+<span class="linenos">21</span>
+<span class="linenos">22</span>2. 技術スタック
+<span class="linenos">23</span>---------------
+<span class="linenos">24</span>Python 3.11 + Flask 3.0
+<span class="linenos">25</span>数値計算 : NumPy・Numba（JIT で高速化）
+<span class="linenos">26</span>可視化   : Plotly（静的 HTML に埋め込む）
+<span class="linenos">27</span>バックグラウンド実行 : ThreadPoolExecutor でノンブロッキング
+<span class="linenos">28</span>依存パッケージは requirements.txt に明記。
+<span class="linenos">29</span>
+<span class="linenos">30</span>3. ディレクトリ構成
+<span class="linenos">31</span>------------------
+<span class="linenos">32</span>cfd_app/
+<span class="linenos">33</span>├── app.py                # Flask エントリ
+<span class="linenos">34</span>├── cfd.py                # 2D CFD ソルバー &amp; ユーティリティ
+<span class="linenos">35</span>├── templates/
+<span class="linenos">36</span>│   ├── index.html        # 入力フォーム
+<span class="linenos">37</span>│   └── result.html       # 結果ページ
+<span class="linenos">38</span>├── static/
+<span class="linenos">39</span>│   └── style.css         # 最小限のデザイン
+<span class="linenos">40</span>├── tests/
+<span class="linenos">41</span>│   └── test_solver.py    # PyTest 用 収束・物理量保存テスト
+<span class="linenos">42</span>├── Dockerfile            # 本番デプロイ用
+<span class="linenos">43</span>├── requirements.txt
+<span class="linenos">44</span>└── README.md
+<span class="linenos">45</span>
+<span class="linenos">46</span>4. 実装要件
+<span class="linenos">47</span>-----------
+<span class="linenos">48</span>cfd.py
+<span class="linenos">49</span>  • solve_cavity(nx, ny, Re, n_steps) -&gt; dict[str, np.ndarray] のインターフェース
+<span class="linenos">50</span>  • ループは Numba @njit(parallel=True) で加速
+<span class="linenos">51</span>  • 収束確認（最大残差 &lt;1e-4）をログ出力
+<span class="linenos">52</span>
+<span class="linenos">53</span>app.py
+<span class="linenos">54</span>  • GET /           → 入力フォーム
+<span class="linenos">55</span>  • POST /run       → 非同期で CFD 実行し /result/&lt;job_id&gt; へリダイレクト
+<span class="linenos">56</span>  • 大規模入力や異常値は HTTP 400
+<span class="linenos">57</span>  • 実行中は JavaScript fetch + /progress API でプログレスバー表示
+<span class="linenos">58</span>
+<span class="linenos">59</span>HTML / CSS
+<span class="linenos">60</span>  • Bootstrap 5 CDN
+<span class="linenos">61</span>  • フォームは form-floating
+<span class="linenos">62</span>  • 結果ページは Plotly グラフ 2 枚を d-flex gap-3 で横並び
+<span class="linenos">63</span>
+<span class="linenos">64</span>テスト
+<span class="linenos">65</span>  • 格子 50×50, Re=100 のキャビティで定常計算
+<span class="linenos">66</span>  • 中心渦の u = −0.05 ± 0.02 を確認
+<span class="linenos">67</span>
+<span class="linenos">68</span>Dockerfile（抜粋）
+<span class="linenos">69</span>  FROM python:3.11-slim
+<span class="linenos">70</span>  WORKDIR /app
+<span class="linenos">71</span>  COPY . .
+<span class="linenos">72</span>  RUN pip install -r requirements.txt
+<span class="linenos">73</span>  EXPOSE 3000
+<span class="linenos">74</span>  CMD [&quot;gunicorn&quot;, &quot;--bind&quot;, &quot;0.0.0.0:3000&quot;, &quot;app:app&quot;]
+<span class="linenos">75</span>
+<span class="linenos">76</span>5. 追加仕様
+<span class="linenos">77</span>-----------
+<span class="linenos">78</span>• 結果 PNG を /static/outputs/&lt;job_id&gt;/ に自動保存
+<span class="linenos">79</span>• ジョブ履歴を SQLite で保持し再閲覧可
+<span class="linenos">80</span>• 限界時間 30 s 超で解像度を半分に落として継続しユーザーに通知
+<span class="linenos">81</span>• 生成物は MIT ライセンス。型ヒント・Google-style docstring・
+<span class="linenos">82</span>  日本語コメント付きで可読性を確保
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="ChatGPT を用いたプロンプト作成" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="second.html" class="btn btn-neutral float-right" title="返答プロンプト①" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tkg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
