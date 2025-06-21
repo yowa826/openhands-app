@@ -1,0 +1,55 @@
+<!-- result.html - Result page -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFD Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">CFD Results</h1>
+        <div class="d-flex gap-3">
+            <div id="velocityPlot"></div>
+<script>
+    // Example Plotly code for velocity vectors
+    const u = [];
+    const v = [];
+    const x = [];
+    const y = [];
+    const quiverData = {
+        type: 'scattergl',
+        mode: 'lines',
+        x: x,
+        y: y,
+        line: {color: 'blue'},
+        name: 'Velocity Vectors'
+    };
+    Plotly.newPlot('velocityPlot', [quiverData]);
+</script>
+            <div id="pressurePlot"></div>
+<script>
+    // Example Plotly code for pressure contour
+    const pressureData = {
+        z: [],
+        type: 'contour',
+        colorscale: 'Viridis',
+        name: 'Pressure Contour'
+    };
+    Plotly.newPlot('pressurePlot', [pressureData]);
+<footer class="mt-5">
+    <p>Computation Time: <span id="computationTime"></span></p>
+    <p>Grid Size: <span id="gridSize"></span></p>
+</footer>
+</script>
+        </div>
+        <a href="/download/<job_id>" class="btn btn-secondary mt-3">Download CSV</a>
+<a href="/" class="btn btn-link mt-3">Back to Top</a>
+    </div>
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+    <script>
+        // Plotly code to render graphs
+    </script>
+</body>
+</html>
